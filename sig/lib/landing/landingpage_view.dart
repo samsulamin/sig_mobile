@@ -1,84 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:sig/beranda/halaman_beranda.dart';
+import 'package:sig/beranda/halaman_login.dart';
+import 'package:sig/beranda/halaman_wisata.dart';
+import 'package:sig/beranda/halaman_tentang.dart';
 import 'package:sig/constant.dart';
-import 'package:sig/beranda/beranda_view.dart';
 
-class LandingPage extends StatefulWidget {
-  @override
-  _LandingPageState createState() => new _LandingPageState();
+void main() {
+  runApp(new MaterialApp(
+    title: "My Apps",
+    home: new Halamannav(),
+  ));
 }
 
-class _LandingPageState extends State<LandingPage> {
-  int _bottomNavCurrentIndex = 0;
-  List<Widget> _container = [
-    new BerandaPage(),
+class Halamannav extends StatefulWidget {
+  @override
+  _HalamannavState createState() => _HalamannavState();
+}
+
+class _HalamannavState extends State {
+  int _selectedIndex = 0;
+
+  final _widgetOptions = [
+    Halamanberanda(),
+    Halamanwisata(),
+    Halamantentang(),
+    LoginPage(),
   ];
 
   @override
-  Widget build(BuildContext context){
-    return new Scaffold(
-      body: _container[_bottomNavCurrentIndex],
-      bottomNavigationBar: _buildBottomNavigation()
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Berandaku'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.pin_drop),
+              title: Text('Daftar Lokasi'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info),
+              title: Text('Tentang Kami'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Login'),
+            ),
+          ],
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          fixedColor: GojekPallete.green,
+          onTap: _onItemTapped,
+        ),
     );
   }
 
-  Widget _buildBottomNavigation(){
-    return new BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      onTap: (index){
-        setState(() {
-          _bottomNavCurrentIndex = index;
-        });
-      },
-      currentIndex: _bottomNavCurrentIndex,
-      items: [
-        BottomNavigationBarItem(
-          activeIcon: new Icon(
-            Icons.home,
-            color: GojekPallete.green,
-          ),
-          icon: new Icon(
-            Icons.home,
-            color: Colors.grey,
-          ),
-          title: new Text(
-            'Beranda',
-          ),
-        ),
-        BottomNavigationBarItem(
-          activeIcon: new Icon(
-            Icons.assessment,
-            color: GojekPallete.green,
-          ),
-          icon: new Icon(
-            Icons.assessment,
-            color: Colors.grey,
-          ),
-          title: new Text('Pesanan'),
-        ),
-        BottomNavigationBarItem(
-          activeIcon: new Icon(
-            Icons.mail,
-            color: GojekPallete.green,
-          ),
-          icon: new Icon(
-            Icons.mail,
-            color: Colors.grey,
-          ),
-          title: new Text('Inbox'),
-        ),
-        BottomNavigationBarItem(
-          activeIcon: new Icon(
-            Icons.person,
-            color: GojekPallete.green,
-          ),
-          icon: new Icon(
-            Icons.person,
-            color: Colors.grey,
-          ),
-          title: new Text('Akun'),
-        ),
-      ],
-    );
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
-
 }

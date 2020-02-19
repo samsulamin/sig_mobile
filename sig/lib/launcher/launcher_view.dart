@@ -19,7 +19,7 @@ class _LauncherPageState extends State<LauncherPage> {
     var duration = const Duration(seconds: 2);
     return new Timer(duration, (){
       Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_){
-        return new LandingPage();
+        return new Halamannav();
       }));
     });
   }
@@ -29,8 +29,8 @@ class _LauncherPageState extends State<LauncherPage> {
       body: new Center(
         child: new Image.asset(
           "assets/tourism.png",
-          height: 400.0,
-          width: 600.0,
+          height: 100.0,
+          width: 250.0,
         ),
       ),
     );
