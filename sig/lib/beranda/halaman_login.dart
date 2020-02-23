@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
           height: 42.0,
           onPressed: (){},
           //color: GojekPallete.green,
-          child: Text('Log In', style: TextStyle(color: GojekPallete.green)),
+          child: Text('Log In', style: TextStyle(color: Colors.black)),
         ),
       ),
     );

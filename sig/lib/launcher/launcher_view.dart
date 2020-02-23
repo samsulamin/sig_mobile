@@ -16,7 +16,7 @@ class _LauncherPageState extends State<LauncherPage> {
   }
 
   startLaunching()async{
-    var duration = const Duration(seconds: 2);
+    var duration = const Duration(seconds: 4);
     return new Timer(duration, (){
       Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_){
         return new Halamannav();
@@ -28,9 +28,9 @@ class _LauncherPageState extends State<LauncherPage> {
     return new Scaffold(
       body: new Center(
         child: new Image.asset(
-          "assets/tourism.png",
-          height: 100.0,
-          width: 250.0,
+          "assets/wt4.png",
+          height: 450.0,
+          width: 225.0,
         ),
       ),
     );

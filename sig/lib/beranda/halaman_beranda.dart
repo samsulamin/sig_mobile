@@ -13,8 +13,7 @@ void main(){
 class Halamanberanda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new SafeArea(
-      child: Scaffold(
+    return new Scaffold(
         appBar: AppBar(
           title: new Text("Sig Wisata Tegal"),
         ),
@@ -24,7 +23,6 @@ class Halamanberanda extends StatelessWidget {
             child: new Text("Jangan Pernah Mundur, Walaupun Harus Tertatih."),
           )
         )
-      )
     );
   }
 }

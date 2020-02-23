@@ -35,11 +35,11 @@ class _HalamannavState extends State {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              title: Text('Berandaku'),
+              title: Text('Beranda'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.pin_drop),
-              title: Text('Daftar Lokasi'),
+              title: Text('Daftar Wisata'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.info),
