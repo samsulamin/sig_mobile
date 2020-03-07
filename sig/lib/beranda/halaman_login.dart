@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sig/constant.dart';
+//import 'package:sig/constant.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -14,8 +14,8 @@ class _LoginPageState extends State<LoginPage> {
       tag: 'hero',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
-        radius: 48.0,
-        child: Image.asset('assets/tourism.png'),
+        radius: 60.0,
+        child: Image.asset('assets/wt4.png'),
       ),
     );
 

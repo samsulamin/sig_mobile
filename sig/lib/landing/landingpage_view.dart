@@ -3,6 +3,9 @@ import 'package:sig/beranda/halaman_beranda.dart';
 import 'package:sig/beranda/halaman_login.dart';
 import 'package:sig/beranda/halaman_wisata.dart';
 import 'package:sig/beranda/halaman_tentang.dart';
+import 'package:sig/beranda/wisata.dart';
+import 'package:sig/model/beranda_model.dart';
+import 'package:sig/menukategori/halaman_kategori.dart';
 import 'package:sig/constant.dart';
 
 void main() {
@@ -25,6 +28,7 @@ class _HalamannavState extends State {
     Halamanwisata(),
     Halamantentang(),
     LoginPage(),
+    HomeScreen(),
   ];
 
   @override
@@ -48,6 +52,10 @@ class _HalamannavState extends State {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               title: Text('Login'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera_roll),
+              title: Text('carousel'),
             ),
           ],
           type: BottomNavigationBarType.fixed,

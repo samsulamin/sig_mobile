@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sig/launcher/launcher_view.dart';
 import 'package:sig/constant.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 
 void main() => runApp(new MyApp());
 

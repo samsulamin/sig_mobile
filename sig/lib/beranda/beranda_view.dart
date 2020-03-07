@@ -18,3 +18,20 @@ class _BerandaPageState extends State<BerandaPage> {
     );
   }
 }
+
+class Halamanberanda extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: AppBar(
+          title: new Text("Sig Wisata Tegal"),
+        ),
+        body: new Container(
+          padding: EdgeInsets.all(20.0),
+          child: new Center(
+            child: new Text("tatih."),
+          )
+        )
+    );
+  }
+}

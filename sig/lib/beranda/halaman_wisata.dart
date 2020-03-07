@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sig/constant.dart';
+//import 'package:sig/constant.dart';
 
 class Halamanwisata extends StatefulWidget {
   static String tag = 'login-page';
