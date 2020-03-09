@@ -23,7 +23,9 @@ class _HalamanAlamState extends State<HalamanAlam> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       appBar: new AppBar(
+        backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
         title: new Text("WISATA ALAM"),
         bottom: new TabBar(
           controller: controller,

@@ -50,32 +50,36 @@ class _KotaScreenState extends State<Kota> {
           return Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Card(
-              child: Padding(
+              elevation: 8.0,
+              margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+              child: Container(
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      profile.title,
-                      style: Theme.of(context).textTheme.title,
+                decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
+                  leading: Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: new BoxDecoration(
+                        border: new Border(
+                            right: new BorderSide(width: 1.0, color: Colors.white24))),
+                    child: Icon(
+                      Icons.location_on, color: Colors.white, size: 40.0,
                     ),
-                    Text(profile.content),
-                    Text(profile.id.toString()),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        FlatButton(
-                          onPressed: () {
-                            // TODO: do something in here
-                          },
-                          child: Text(
-                            "Lihat Detail",
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
+                  title: Text(
+                    profile.title,
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+
+                  subtitle: Row(
+                    children: <Widget>[
+                      Icon(Icons.linear_scale, color: Colors.yellowAccent),
+                      Text(profile.content, style: TextStyle(color: Colors.white))
+                    ],
+                  ),
+                  trailing:
+                  Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0)
                 ),
               ),
             ),

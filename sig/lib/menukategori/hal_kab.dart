@@ -16,7 +16,7 @@ class Kabupaten extends StatelessWidget {
             new Padding(padding: new EdgeInsets.all(10.0),),
             new Text(
               "Wisata Not Found",
-              style: new TextStyle(fontSize: 20.0),)
+              style: new TextStyle(fontSize: 25.0, color: Colors.white),)
           ],
         ),
       ),

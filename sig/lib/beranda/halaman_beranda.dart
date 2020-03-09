@@ -46,7 +46,9 @@ class CarouselDemoState extends State<Halamanberanda> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
         title: new Text("Wisata Tegal"),
       ),
       body: new Container(
