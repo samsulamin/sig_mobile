@@ -1,16 +1,15 @@
 import 'package:sig/model/beranda_model.dart';
 import 'package:http/http.dart' show Client;
 
-class ApiService {
-
+class Apiservice{
   final String baseUrl = "http://10.0.2.2/wisatategal/api/v1/wisataku";
   Client client = Client();
 
-  Future<List<Profile>> getProfiles() async {
+  Future<List<Data>> getProfiles() async {
     final response = await client.get("$baseUrl");
-    if (response.statusCode == 200) {
+    if(response.statusCode == 200){
       return profileFromJson(response.body);
-    } else {
+    }else{
       return null;
     }
   }

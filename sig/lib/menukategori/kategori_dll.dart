@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sig/menukategori/hal_kab.dart' as kab;
-import 'package:sig/menukategori/hal_kota.dart' as kota;
+import 'package:sig/menukategori/kategori_wilayah/kota_kat_dll.dart' as kota;
 
 class HalamanDll extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class _HalamanDllState extends State<HalamanDll> with SingleTickerProviderStateM
       body: new TabBarView(
         controller: controller,
         children: <Widget>[
-          new kota.Kota(),
+          new kota.KotaKatDll(),
           new kab.Kabupaten()
         ],
       ),

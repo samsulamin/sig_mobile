@@ -1,45 +1,48 @@
+// To parse this JSON data, do
+//
+//     final data = dataFromJson(jsonString);
+
 import 'dart:convert';
 
-class Profile {
-  final int id;
-  final String title;
-  final String content;
+class Data {
+    int id;
+    String title;
+    String content;
+    DateTime createdAt;
+    DateTime updatedAt;
 
-  Profile({
-    this.id ,
-    this.title,
-    this.content
+    Data({
+        this.id,
+        this.title,
+        this.content,
+        this.createdAt,
+        this.updatedAt,
     });
 
-  factory Profile.fromJson(Map<String, dynamic> map) {
-    return Profile(
-      id: map["id"],
-      title : map["title"].toString(),
-      content : map["content"].toString()
+    factory Data.fromJson(Map<String, dynamic> json) => Data(
+        id: json["id"],
+        title: json["title"],
+        content: json["content"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
     );
-  }
 
-  Map<String, dynamic> toJson() {
-    return {
-      "id" : id, 
-      "title" : title, 
-      "content": content
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "content": content,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
     };
-  }
-
-  @override
-  String toString() {
-    return 'Profile{id : $id, title : $title, content: $content}';
-  }
-
 }
 
-List<Profile> profileFromJson(String jsonData) {
+List<Data> profileFromJson(String jsonData){
   final data = json.decode(jsonData);
-  return List<Profile>.from(data.map((item) => Profile.fromJson(item)));
+  return List<Data>.from(data.map((item) => Data.fromJson(item)));
 }
 
-String profileToJson(Profile data) {
+String profileToJson(Data data){
   final jsonData = data.toJson();
   return json.encode(jsonData);
 }
+

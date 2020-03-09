@@ -8,27 +8,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  ApiService apiService;
+  Apiservice apiService;
 
   @override
   void initState() {
     super.initState();
-    apiService = ApiService();
+    apiService = Apiservice();
   }
 
   @override
-  Widget build(BuildContext context) {
+  
+  /*Widget build(BuildContext context) {
     return SafeArea(
+      
       child: FutureBuilder(
         future: apiService.getProfiles(),
-        builder: (BuildContext context, AsyncSnapshot<List<Profile>> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<Data>> snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
                   "Something wrong with message: ${snapshot.error.toString()}"),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
-            List<Profile> profiles = snapshot.data;
+            List<Data> profiles = snapshot.data;
             return _buildListView(profiles);
           } else {
             return Center(
@@ -38,14 +40,42 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
     );
+  }*/
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Data Wisata"),
+      ),
+      body: new Container(
+        child: FutureBuilder(
+          future: apiService.getProfiles(),
+          builder: (BuildContext context, AsyncSnapshot<List<Data>> snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(
+                    "Something wrong with message: ${snapshot.error.toString()}"),
+              );
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              List<Data> profiles = snapshot.data;
+              return _buildListView(profiles);
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
+      ),
+    );
   }
 
-  Widget _buildListView(List<Profile> profiles) {
+  Widget _buildListView(List<Data> profiles) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: ListView.builder(
         itemBuilder: (context, index) {
-          Profile profile = profiles[index];
+          Data profile = profiles[index];
           return Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Card(
@@ -57,6 +87,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       profile.title,
                       style: Theme.of(context).textTheme.title,
+                    ),
+                    Text(profile.content),
+                    Text(profile.id.toString()),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton(
+                          onPressed: () {
+                            // TODO: do something in here
+                          },
+                          child: Text(
+                            "Lihat Detail",
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
