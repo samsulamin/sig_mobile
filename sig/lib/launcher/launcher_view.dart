@@ -26,11 +26,12 @@ class _LauncherPageState extends State<LauncherPage> {
 
   Widget build(BuildContext context) {
     return new Scaffold(
+      //backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       body: new Center(
         child: new Image.asset(
-          "assets/wt4.png",
-          height: 450.0,
-          width: 225.0,
+          "assets/wtbr.png",
+          height: 225.0,
+          width: 500.0,
         ),
       ),
     );

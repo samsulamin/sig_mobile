@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sig/model/ApiServices.dart';
-import 'package:sig/model/beranda_model.dart';
+import 'package:sig/model/model_wisata.dart';
 
 class Kota extends StatefulWidget {
   @override
@@ -67,7 +67,7 @@ class _KotaScreenState extends State<Kota> {
                     ),
                   ),
                   title: Text(
-                    profile.title,
+                    profile.namawisata,
                     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
@@ -75,7 +75,7 @@ class _KotaScreenState extends State<Kota> {
                   subtitle: Row(
                     children: <Widget>[
                       Icon(Icons.linear_scale, color: Colors.yellowAccent),
-                      Text(profile.content, style: TextStyle(color: Colors.white))
+                      Text(profile.alamatwisata, style: TextStyle(color: Colors.white))
                     ],
                   ),
                   trailing:

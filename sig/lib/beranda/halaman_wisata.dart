@@ -1,103 +1,63 @@
 import 'package:flutter/material.dart';
-//import 'package:sig/constant.dart';
+import 'package:sig/beranda/beranda_appbar.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:async';
 
-class Halamanwisata extends StatefulWidget {
-  static String tag = 'login-page';
-  @override
-  _WisataPageState createState() => new _WisataPageState();
-}
+void main() => runApp(MyApp());
 
-class _WisataPageState extends State<Halamanwisata> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: new Text("SIG Wisata Tegal"),
-      ),
-      body: DaftarWisata(),
+      appBar: SigAppBar(),
+      body: MapSample(),
     );
   }
 }
 
-class DaftarWisata extends StatelessWidget {
+class MapSample extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<MapSample> {
+  final Set<Marker> _markers = {};
+  final LatLng _currentPosition = LatLng(-6.867689, 109.1359443);
+  BitmapDescriptor myIcon;
+
+  @override
+  void initState() {
+      BitmapDescriptor.fromAssetImage(
+          ImageConfiguration(size: Size(48, 48)), 'assets/tourism.png')
+          .then((onValue) {
+        myIcon = onValue;
+      });
+      
+    _markers.add(
+      Marker(
+        markerId: MarkerId("-6.867689, 109.1359443"),
+        position: _currentPosition,
+        //icon: BitmapDescriptor.defaultMarker,
+        icon: myIcon,
+        //icon: Icon(icon)
+      ),
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Container(
-        child: ListView(
-          children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: <Widget>[
-                     Container(
-                       width: 50.0,
-                       height: 100.0,                      
-                       //color: Colors.blue,
-                       //child: new Icon(Icons.home, color: Colors.white, size: 50.0,),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            decoration: new BoxDecoration(
-                              color: Colors.indigoAccent[100],
-                              borderRadius: new BorderRadius.only(
-                              topLeft:  const  Radius.circular(10.0),
-                              bottomLeft: const  Radius.circular(10.0))
-                            ),
-                            child: IconButton(
-                              icon: Icon(Icons.location_on),
-                              color: Colors.white,
-                              iconSize: 35,
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(15.0),
-                          height: 100.0,
-                          color: Colors.indigo,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Rita Park", style: TextStyle(color: Colors.white, fontSize: 20.0)),
-                              Text("Alamat: Jl.......", style: TextStyle(color: Colors.white),)
-                            ],
-                          ),
-                        ),
-                      ),
-
-                     Container(
-                       width: 50.0,
-                       height: 100.0,                      
-                       //color: Colors.blue,
-                       //child: new Icon(Icons.home, color: Colors.white, size: 50.0,),
-                      child: InkWell(
-                        //borderRadius: BorderRadius.circular(20),
-                        //splashColor: GojekPallete.green,
-                        //highlightColor: GojekPallete.green,
-                        child: Container(
-                          decoration: new BoxDecoration(
-                            color: Colors.indigoAccent[100],
-                            borderRadius: new BorderRadius.only(
-                            topRight:  const  Radius.circular(10.0),
-                            bottomRight: const  Radius.circular(10.0))
-                          ),
-                          child: IconButton(
-                            icon: Icon(Icons.fullscreen),
-                            color: Colors.white,
-                            iconSize: 35,
-                            onPressed: () {},
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              
-          ],
+    return Scaffold(
+      appBar: SigAppBar(),
+      
+      body: GoogleMap(
+        mapType: MapType.hybrid,
+        initialCameraPosition: CameraPosition(
+          target: _currentPosition,
+          zoom: 14.0,
         ),
-      );
+        markers: _markers,
+      ),
+    );
   }
 }

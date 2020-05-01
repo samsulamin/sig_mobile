@@ -1,44 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:sig/beranda/beranda_appbar.dart';
+import 'package:sig/constant.dart';
 
 class Halamantentang extends StatefulWidget {
-  static String tag = 'login-page';
+  //static String tag = 'login-page';
   @override
   _TentangPageState createState() => new _TentangPageState();
 }
 
-
 class _TentangPageState extends State<Halamantentang> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: AppBar(
-          title: new Text("Sig Wisata Tegal"),
-        ),
-          body: MyStatelessWidget(),
-    );
-  }
-}
-
-
-/// This is the stateless widget that the main application instantiates.
-class MyStatelessWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      padding: const EdgeInsets.all(10.0),
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const ListTile(
-              contentPadding: const EdgeInsets.all(20.0),
-              leading: Icon(Icons.face),
-              title: Text('Tentang Kami'),
-              subtitle: Text('adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.'),
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Row(
+        children: [
+          Expanded(
+            /*1*/
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /*2*/
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    'SIG Wisata Tegal',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Text(
+                  'Hubungi Kami : ',
+                  style: TextStyle(
+                    color: Colors.grey[500],
+                  ),
+                ),
+              ],
             ),
+          ),
+          /*3*/
+          Icon(
+            Icons.favorite,
+            color: Colors.red[500],
+          ),
+          Icon(
+            Icons.favorite,
+            color: Colors.red[500],
+          ),
+          /*3*/
+          Icon(
+            Icons.favorite,
+            color: Colors.red[500],
+          ),
+          Icon(
+            Icons.favorite_border,
+            color: Colors.red[500],
+          ),
+          Icon(
+            Icons.favorite_border,
+            color: Colors.red[500],
+          ),
+        ],
+      ),
+    );
+
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildButtonColumn(color, Icons.toc, 'Facebook'),
+          _buildButtonColumn(color, Icons.call, 'Phone'),
+          _buildButtonColumn(color, Icons.mail, 'Email'),
+          _buildButtonColumn(color, Icons.feedback, 'Feedback'),
+        ],
+      ),
+    );
+
+    Widget textSection = Container(
+      //color: GojekPallete.green,
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        'Objek wisata Pantai Alam Indah berada di Kota Tegal, Jawa Tengah. Dari jalan Pantura hanya berjarak 500 meter. Meskipun belum ada jalur angkutan kota yang menuju ke PAI, masyarakat dapat menjangkau dengan transportasi apa pun, termasuk berjalan kaki. PAI merupakan salah satu potensi yang turut menyumbangkan pendapatan asli daerah (PAD) kepada Pemerintah Kota Tegal melalui pemungutan tiket masuk dan retribusi parkir. Sebelumnya, PAI masih belum tertata. Pertamanan dan fasilitas di dalamnya masih seadanya, padahal minat masyarakat terhadap objek wisata itu cukup besar, terutama pada saat hari Minggu dan peringatan hari besar nasional.' ,
+        softWrap: true,
+      ),
+    );
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: SigAppBar(),
+        //backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+        body: ListView(
+          children: [
+            Image.asset(
+              'assets/wtbr.png',
+              width: 350,
+              height: 280,
+              fit: BoxFit.cover,
+            ),
+            titleSection,
+            buttonSection,
+            textSection,
           ],
         ),
       ),
+    );
+  }
+
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

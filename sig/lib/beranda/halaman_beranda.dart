@@ -1,6 +1,8 @@
 //carousel
 import 'package:flutter/material.dart';
+//import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:sig/beranda/beranda_appbar.dart';
 import 'package:sig/menukategori/halaman_kategori.dart';
 import 'package:sig/menukategori/kategori_edukasi.dart';
 import 'package:sig/menukategori/kategori_religi.dart';
@@ -46,16 +48,13 @@ class CarouselDemoState extends State<Halamanberanda> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-        title: new Text("Wisata Tegal"),
-      ),
+      //backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      appBar: SigAppBar(),
       body: new Container(
         child: new ListView(
           physics: ClampingScrollPhysics(),
           children: <Widget>[
-            new Container(
+            /*new Container(
               padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
               color: Colors.white,
               child: new Column(
@@ -65,7 +64,7 @@ class CarouselDemoState extends State<Halamanberanda> {
                   _akun(),
                 ],
               ),
-            ),
+            ),*/
             new Container(
               padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
               color: Colors.white,
@@ -74,6 +73,7 @@ class CarouselDemoState extends State<Halamanberanda> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   _menukategori(),
+                  
                 ],
               ),
             ),
@@ -81,8 +81,8 @@ class CarouselDemoState extends State<Halamanberanda> {
               padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
               color: Colors.white,
               child: new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                //mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   _carousel(),
                 ],
@@ -96,11 +96,11 @@ class CarouselDemoState extends State<Halamanberanda> {
 
 Widget _carousel() {
   return new Container(
-      height: 500.0,
+      //height: 400.0,
       child: new Column(
         children: <Widget>[
             carouselSlider = CarouselSlider(
-              height: 410.0,
+              height: 400.0,
               initialPage: 0,
               enlargeCenterPage: true,
               autoPlay: true,

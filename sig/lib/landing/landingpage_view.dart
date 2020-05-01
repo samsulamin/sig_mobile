@@ -25,15 +25,15 @@ class _HalamannavState extends State {
 
   final _widgetOptions = [
     Halamanberanda(),
-    Halamanwisata(),
+    MapSample(),
     Halamantentang(),
     LoginPage(),
-    HomeScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
           items: [
@@ -42,8 +42,8 @@ class _HalamannavState extends State {
               title: Text('Beranda'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.pin_drop),
-              title: Text('Daftar Wisata'),
+              icon: Icon(Icons.map),
+              title: Text('Peta Wisata'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.info),
@@ -52,10 +52,6 @@ class _HalamannavState extends State {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               title: Text('Login'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.camera_roll),
-              title: Text('carousel'),
             ),
           ],
           type: BottomNavigationBarType.fixed,
